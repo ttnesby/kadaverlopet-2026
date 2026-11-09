@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kadaverløpet 2026 – race report</title>
+<meta name="description" content="Erfaringer fra Kadaverløpet 2026, fra Spydeberg kirke til Eika Ås.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><polygon points='20,5 35,31 5,31' fill='none' stroke='%23A3237F' stroke-width='3.5'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Sofia+Sans+Condensed:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F1F3F0;      /* overskyet himmel */
+  --ink: #1E2721;        /* granskog */
+  --muted: #5C6760;
+  --moss: #3E5A45;
+  --grass: #B98A4E;      /* visnet myrgras */
+  --contour: #9A5A2E;    /* kotebrun */
+  --overprint: #A3237F;  /* postsirkel */
+  --rule: #D5DAD4;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #141A16; --ink: #E3E8E2; --muted: #9AA59D; --moss: #8FB39A;
+    --grass: #D2A86E; --contour: #D08A5A; --overprint: #E072BE; --rule: #2C352F;
+    color-scheme: dark;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: Literata, Georgia, "Times New Roman", serif;
+  font-size: clamp(1.02rem, 0.95rem + 0.3vw, 1.15rem); line-height: 1.65;
+  font-optical-sizing: auto;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--overprint); }
+a:focus-visible { outline: 3px solid var(--overprint); outline-offset: 3px; }
+.wrap { max-width: 40rem; margin: 0 auto; padding: 0 1.25rem; }
+
+header.hero { padding-top: clamp(2.5rem, 8vw, 5.5rem); padding-bottom: 2rem; }
+.hero h1 {
+  font-family: "Sofia Sans Condensed", "Arial Narrow", sans-serif; font-weight: 800;
+  font-size: clamp(2.4rem, 1.4rem + 6.5vw, 6.5rem); line-height: 0.9; letter-spacing: -0.01em;
+  margin: 0; display: flex; align-items: flex-start; gap: 0.18em;
+}
+.hero h1 .tri { width: 0.62em; height: 0.62em; flex: none; margin-top: 0.06em; }
+.hero h1 .tri polygon { fill: none; stroke: var(--overprint); stroke-width: 3.5; stroke-linejoin: round; }
+.hero p.lede { margin: 1.1rem 0 0; color: var(--muted); max-width: 32rem; }
+.hero-photo { max-width: 56rem; margin: 0 auto; padding: 0 1.25rem; }
+.hero-photo img { width: 100%; max-height: 92vh; object-fit: cover; object-position: 50% 45%; border-radius: 2px; }
+.hero-photo figcaption { color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+
+main { padding-bottom: 5rem; }
+section { margin-top: 3rem; }
+h2, h3 { font-family: "Sofia Sans Condensed", "Arial Narrow", sans-serif; line-height: 1.1; }
+h2 { font-size: 2rem; font-weight: 700; color: var(--moss); margin: 0 0 0.6rem; }
+h3.plain { font-size: 1.3rem; margin: 1.8rem 0 0.4rem; }
+p { margin: 0 0 1em; }
+ul, ol { padding-left: 1.3rem; }
+li::marker { color: var(--grass); }
+strong.refl {
+  display: block; margin-top: 0.4rem;
+  font-family: "Sofia Sans Condensed", "Arial Narrow", sans-serif; font-weight: 700;
+  color: var(--contour); font-size: 1.05rem; letter-spacing: 0.01em;
+}
+strong.refl + br { display: none; }
+
+/* The course: legs drawn as a line between control circles */
+ol.legs { list-style: none; padding: 0; margin: 2rem 0 0; position: relative; }
+.leg { position: relative; padding: 0 0 2.5rem 3.4rem; }
+.leg::before {
+  content: ""; position: absolute; left: 1.05rem; top: 2.6rem; bottom: 0;
+  width: 2px; background: var(--overprint); opacity: 0.55;
+}
+.leg:last-child::before { display: none; }
+.ctrl { position: absolute; left: 0; top: 0; width: 2.3rem; height: 2.3rem; overflow: visible; }
+.ctrl circle, .ctrl polygon { fill: none; stroke: var(--overprint); stroke-width: 2.6; }
+.ctrl text { fill: var(--overprint); font: 700 15px "Sofia Sans Condensed", "Arial Narrow", sans-serif; }
+.leg h3 { font-size: 1.6rem; font-weight: 700; margin: 0.25rem 0 0.7rem; }
+.leg h3 .sub { display: block; font-size: 1rem; font-weight: 500; color: var(--muted); margin-top: 0.2rem; }
+
+figure.map { margin: 1.5rem 0 0.5rem; position: relative; z-index: 1; background: var(--paper); }
+figure.map a { display: block; text-decoration: none; }
+figure.map img { border: 1px solid var(--rule); background: #fff; }
+figure.map.wide { margin-left: -3.4rem; }
+figure.map.tall img { max-height: 95vh; width: auto; margin: 0 auto; }
+figure.map figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.45rem; }
+@media (min-width: 66rem) {
+  figure.map.wide { width: 60rem; margin-left: -14.65rem; }
+}
+@media (max-width: 40rem) {
+  .leg { padding-left: 2.8rem; }
+  .ctrl { width: 1.9rem; height: 1.9rem; }
+  .leg::before { left: 0.88rem; top: 2.2rem; }
+  figure.map.wide { margin-left: -2.8rem; margin-right: -1.25rem; }
+  figure.map.wide .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  figure.map.wide img { width: 46rem; max-width: none; }
+}
+
+section.conclusion { border-top: 2px solid var(--overprint); padding-top: 1.5rem; margin-top: 3.5rem; }
+footer { color: var(--muted); font-size: 0.85rem; padding: 2rem 0 3rem; border-top: 1px solid var(--rule); }
+@media (prefers-reduced-motion: no-preference) {
+  .hero h1 .tri polygon { stroke-dasharray: 90; stroke-dashoffset: 90; animation: draw 1.1s 0.2s ease-out forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+}
+</style>
+</head>
+<body>
+<header class="hero wrap">
+  <h1><svg class="tri" viewBox="0 0 40 40" aria-hidden="true"><polygon points="20,5 35,31 5,31"/></svg>Kadaverløpet 2026</h1>
+  <p class="lede">Race report – Spydeberg kirke til Eika Ås, 41+ km gjennom skog, myr og hogstfelt.</p>
+</header>
+<figure class="hero-photo">
+  <img src="img/forside.jpg" width="1400" height="1867" alt="Sabina balanserer over et veltet tre som bru over myra.">
+  <figcaption>Et veltet tre fikk funksjon som bru over myra mellom post 1 og post 2.</figcaption>
+</figure>
+<main class="wrap">
+<section><h2>Hensikt</h2><p>Dette er en kort oppsummering av erfaringene med Kadaverløpet 2026.</p></section><section><h2>Været</h2><p>Været var overskyet/grått med tendens til tåke enkelte steder, temperatur -1 til 1 grad.</p></section><section><h2>Bekledning</h2><ul>
+<li>ulltruse</li>
+<li>litt tykke ullsokker</li>
+<li>litt tykk ulloverdel</li>
+<li>Swix-skibukse</li>
+<li>Stormberg treningsjakke</li>
+<li>buff i hals</li>
+<li>pannebånd</li>
+<li>tynne fleecehansker</li>
+<li>løpevest med<ul>
+<li>lunken styrkedrikk</li>
+<li>lunkent vann</li>
+<li>4 kvartinger med Nugatti</li>
+<li>hodelykt</li>
+<li>ekstra lue</li>
+<li>ekstra ullhansker</li>
+<li>ekstra buff</li>
+<li>vindduk</li>
+<li>reflekterende folie</li>
+</ul>
+</li>
+<li>Hoka terrengsko</li>
+</ul></section><section><h2>Målsetning</h2><p>Ha en trivelig dagstur i skogen og god disponering av krefter i hyggelig selskap med Sabina.</p></section><section><h2>Gjennomføring</h2></section><h3 class="plain">Ulike kart</h3><ol>
+<li>Skannet kadaverkart</li>
+<li>Norsk standard kartserie (https://norgeskart.no)</li>
+<li>Norsk orienteringskart Norge (https://mapant.no)</li>
+</ol>
+<p>Start var lagt til Spydeberg kirke og for oss med god tid gikk det stille og rolig for seg.</p><ol class="legs"><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><text x="20" y="25.5" text-anchor="middle">1</text></svg><h3>Start til post 1</h3><div class="legtext"><p>Valget stod mellom nordre versus søndre rute (ref. røde stiplede linjer) uten noen «optimaliserende» tanker grunnet god tid. <br />
+Konklusjonen ble søndre rute i litt rask gange. Underveis var det introduksjon til kart, målestokk, ekvidistanse og kompass til Sabina.</p>
+<p>Målestokk 1:30 000 er ganske grovt (færre detaljer på kartet), som ble fort tydelig når vi begynte turen i terrenget ved Bjørkebakke gård.<br />
+Siden innstillingen var dagstur klatret vi opp og ned i terrenget uten bekymringer.</p>
+<p><strong class="refl">Refleksjon 1</strong> <br />
+Ref. 3 forskjellige kartutsnitt med hver sin representasjon av terrenget (abstraksjon) fra start til post 1.<br />
+Jeg er bortskjemt med en abstraksjon som ligger mellom Norgeskart og Mapant og synes kadaverkartet ble for grovt med tilhørende utfordringer med kontakt mellom kart og terreng. <br />
+Det er ikke lett å føle seg trygg på rett kote (høydekurve).</p>
+<p>Vi hadde ganske god kontroll underveis og rutinert nok for kompasskurs og avstand fra «y» i «Spydeberg» til post 1.<br />
+Kurs og kontroll på avstand blir vanskeligere jo lenger avstand-til-post blir. </p>
+<p><strong class="refl">Refleksjon 2</strong><br />
+Uten unntak stoppet vi for tidlig før hver post, matstasjoner ekskludert. Det var ikke noe galt med kursen, men usikkerheten i avstanden «vokste» seg stor.<br />
+Det er fristende å stoppe for tidlig heller enn for sent hvis man kan passere posten uten å bli stoppet av noen detaljer. F.eks. nord for post 1.</p>
+<p><strong class="refl">Refleksjon 3</strong><br />
+Verifikasjon med digitalt kart gav jevn progresjon til post 1.</p></div><figure class="map tall"><a href="img/kart-1.jpg" title="Åpne i full størrelse"><div class="scroll"><img src="img/kart-1.jpg" width="1430" height="2400" loading="lazy" alt="Start til post 1: kadaverkart, Norgeskart og Mapant, ovenfra og ned."></div></a><figcaption>Start til post 1: kadaverkart, Norgeskart og Mapant, ovenfra og ned. Trykk for full størrelse.</figcaption></figure></li><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><text x="20" y="25.5" text-anchor="middle">2</text></svg><h3>Post 1 til post 2</h3><div class="legtext"><p>Veivalget til post 2 var å bli fanget av myrarmen og satset på «tørr nok» sti over. Deretter bare følge nedover og bli fanget av bekk til bekk og opp til myra.</p>
+<p><strong class="refl">Refleksjon 4</strong><br />
+Tynne blå streker forbinder jeg med hyggelig bekk. Ok, erfaringsmessig er tynne blå streker på Dovre kartet ganske store elver, men ble ganske paff over hvor åpen myrarmen var.</p>
+<p>Vi ga opp den «tørr nok» stien og satte kursen nordover for smalere og hyggeligere myr. Heldigvis fant vi et tre som hadde falt over myra og fikk sin funksjon som bru.</p>
+<p>Ref. refleksjon 1, 2 og 3 som fikk sin reprise mot post 2. Igjen, vi hadde god tid og stresset ikke, «fomlet» sakte, men sikkert mot post 2. Se tilhørende kartutsnitt.</p></div><figure class="map wide"><a href="img/kart-2.jpg" title="Åpne i full størrelse"><div class="scroll"><img src="img/kart-2.jpg" width="2400" height="1100" loading="lazy" alt="Post 1 til post 2: kadaverkart, Norgeskart og Mapant, fra venstre."></div></a><figcaption>Post 1 til post 2: kadaverkart, Norgeskart og Mapant, fra venstre. Trykk for full størrelse.</figcaption></figure></li><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><text x="20" y="25.5" text-anchor="middle">3</text></svg><h3>Post 2 til post 3<span class="sub">matstasjon</span></h3><div class="legtext"><p>Det ble en enkel strekning med kurs og avstand til stien som ble fulgt hele veien til post 3.<br />
+Klokken viste 13 og vi lå ca 30 min etter nestsiste gruppe. Å være sist var forventet, men vi ble bekymret over fristen kl. 16 for 2. matstasjon (post 5).</p></div></li><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><text x="20" y="25.5" text-anchor="middle">4</text></svg><h3>Post 3 til post 4</h3><div class="legtext"><p>Veivalget var greit og rolig jogg førte oss nord for post 4. <br />
+Reprise av refleksjon 1, 2 og 3.</p>
+<p><strong class="refl">Refleksjon 5</strong><br />
+Se kartutsnitt for post 4 - hvilken kolle?</p></div><figure class="map wide"><a href="img/kart-3.jpg" title="Åpne i full størrelse"><div class="scroll"><img src="img/kart-3.jpg" width="2400" height="1636" loading="lazy" alt="Post 4: kadaverkart, Norgeskart og Mapant, fra venstre."></div></a><figcaption>Post 4: kadaverkart, Norgeskart og Mapant, fra venstre. Trykk for full størrelse.</figcaption></figure></li><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><text x="20" y="25.5" text-anchor="middle">5</text></svg><h3>Post 4 til post 5<span class="sub">matstasjon</span></h3><div class="legtext"><p>Veivalget var greit og rolig jogg førte oss til post 5, før kl. 15.<br />
+Med god margin til fristen tok vi oss god tid til kaker og toddy. </p></div></li><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><text x="20" y="25.5" text-anchor="middle">6</text></svg><h3>Post 5 til post 6</h3><div class="legtext"><p>Det ble et konservativt veivalg grunnet arbeidstiden var nå 6 timer+ og ønske om å spare på kreftene. Vi tok veien til Kroer-løypa og fulgte den et stykke. <br />
+Vi valgte å følge veien rett syd for post 6, der stien gikk syd for veien. Dette ble en oppgave i kompasskurs, avstand og nærkontakt med høydekurvene.</p>
+<p><strong class="refl">Refleksjon 6</strong><br />
+Jeg har aldri opplevd hogstfelt med ungskog kappet i tilfeldig mønster. Utrolig vanskelig å passere.</p>
+<p>Dessverre ble det reprise av refleksjon 1,2 og 5 (hvilket søkk). Se kartutsnitt for post 6. Underveis i prosessen falt mørket på og hodelykt ble tatt frem.<br />
+Vi gjorde et forsøk på markerte sirkler i Norgeskart og Mapant, men hogstfelt i kombinasjon med kratt gjorde det vanskelig. </p>
+<p>I dialog ble vi enige om å avslutte mens leken var god, fortsatt fin form, ikke kalde og nok batteri på hodelykt.<br />
+Det ble korteste vei til veien vest for post 6 og rolig jogg via Trampen, Eldor Nord, forbi grisene, gjennom Dyster gård, videregående og til Eika.</p></div><figure class="map wide"><a href="img/kart-4.jpg" title="Åpne i full størrelse"><div class="scroll"><img src="img/kart-4.jpg" width="2400" height="1120" loading="lazy" alt="Post 6: kadaverkart, Norgeskart og Mapant, fra venstre."></div></a><figcaption>Post 6: kadaverkart, Norgeskart og Mapant, fra venstre. Trykk for full størrelse.</figcaption></figure></li><li class="leg"><svg class="ctrl" viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15" /><circle cx="20" cy="20" r="10" /></svg><h3>Målgang Eika</h3><div class="legtext"><p>Klokken viste mange arbeidstimer og 41+ km. </p></div></li></ol><section class="conclusion"><h2>Konklusjon</h2><ul>
+<li>Utmerket turselskap med Sabina, som gjør sin <em>første maraton</em> fra Spydeberg kirke til Eika Ås. Upåklagelig humør og pågangsmot.</li>
+<li>Utmerket bekledning</li>
+<li>Jeg har ikke gode nok orienteringsevner (type gyroskop) når kartet har sparsomme detaljer</li>
+<li>Utmerket disponering av krefter og nok kondisjon</li>
+</ul>
+<p>Og hva kan gjøres bedre? <br />
+Jeg er ikke motivert for å trene kompasskurs og avstand, eller å løpe i terreng. <br />
+Det er mulig å jogge litt mer til å begynne med, og dermed gi seg selv mer tid i dagslys.<br />
+Om man finner postene fort nok, blir på lykke og fromme.</p>
+<p>Det er fullt mulig å stille 2027 med utgangspunkt i lang dagstur i skogen.</p></section>
+</main>
+<footer class="wrap">Skrevet av Torstein, november 2026.</footer>
+</body>
+</html>
